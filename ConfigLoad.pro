@@ -3,6 +3,7 @@ TEMPLATE = subdirs
 SUBDIRS += \
     ConfigFoundation \
     ConfigGen \
+    ConfigPanel \
     ConfigParser \
     ParserConfig
 

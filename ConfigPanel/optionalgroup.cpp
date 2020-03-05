@@ -13,8 +13,8 @@
 
 using namespace CustomWidget;
 
-OptionalGroup::OptionalGroup(WSFoundation::ConfigV1::OptionalGroup *group, QWidget *parent)
-    :QGroupBox (group->configTitle(), parent), group(group)
+OptionalGroup::OptionalGroup(WSFoundation::ConfigV1::OptionalGroup *groupin, QWidget *parent)
+    :QGroupBox (groupin->configTitle(), parent), group(groupin)
 {
     setCheckable(true);
     connect(this,   QOverload<bool>::of(&QGroupBox::clicked), [=](bool v){

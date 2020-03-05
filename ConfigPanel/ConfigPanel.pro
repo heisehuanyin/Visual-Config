@@ -1,15 +1,17 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2020-02-26T19:45:40
+# Project created by QtCreator 2020-03-05T09:01:27
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += widgets
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT       -= gui
 
-TARGET = ParserConfig
-TEMPLATE = app
+TARGET = ConfigPanel
+TEMPLATE = lib
+
+DEFINES += CONFIGPANEL_LIBRARY
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
@@ -22,19 +24,36 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-CONFIG += c++11
-
-ICON = icon.icns
-
 SOURCES += \
-        main.cpp
+        boolindicator.cpp \
+        colorinput.cpp \
+        configpanel.cpp \
+        fontconfig.cpp \
+        itemsgroup.cpp \
+        numberinput.cpp \
+        optionalgroup.cpp \
+        pathinput.cpp \
+        selectlist.cpp \
+        setstack.cpp \
+        textinput.cpp
 
 HEADERS += \
+        boolindicator.h \
+        colorinput.h \
+        configpanel.h \
+        fontconfig.h \
+        itemsgroup.h \
+        numberinput.h \
+        optionalgroup.h \
+        pathinput.h \
+        selectlist.h \
+        setstack.h \
+        textinput.h
 
-# Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
-!isEmpty(target.path): INSTALLS += target
+unix {
+    target.path = /usr/lib
+    INSTALLS += target
+}
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../ConfigFoundation/release/ -lConfigFoundation
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../ConfigFoundation/debug/ -lConfigFoundation
@@ -42,13 +61,3 @@ else:unix: LIBS += -L$$OUT_PWD/../ConfigFoundation/ -lConfigFoundation
 
 INCLUDEPATH += $$PWD/../ConfigFoundation
 DEPENDPATH += $$PWD/../ConfigFoundation
-
-DISTFILES += \
-    icon.icns
-
-win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../ConfigPanel/release/ -lConfigPanel
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../ConfigPanel/debug/ -lConfigPanel
-else:unix: LIBS += -L$$OUT_PWD/../ConfigPanel/ -lConfigPanel
-
-INCLUDEPATH += $$PWD/../ConfigPanel
-DEPENDPATH += $$PWD/../ConfigPanel

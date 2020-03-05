@@ -1,6 +1,4 @@
-#include "widget.h"
-#include "../ConfigFoundation/configv1.h"
-
+#include "configpanel.h"
 #include "boolindicator.h"
 #include "numberinput.h"
 #include "pathinput.h"
@@ -12,14 +10,14 @@
 #include "optionalgroup.h"
 #include "itemsgroup.h"
 
-#include <QCommandLinkButton>
-#include <QVBoxLayout>
+using namespace WSFoundation;
+using namespace WSFoundation::ConfigV1;
 
-Widget::Widget(const QString content, QWidget *parent)
-    : QScrollArea (parent), base_layout(nullptr),
-      config_xml(WSFoundation::ConfigV1::Config::genNewInstance(content))
+
+ConfigPanel::ConfigPanel(Config *entity, QWidget *parent)
+    :QScrollArea (parent), config_xml(entity)
 {
-    base_panel = new QWidget(this);
+    auto base_panel = new QWidget(this);
     setWidget(base_panel);
     setWidgetResizable(true);
     base_layout = new QVBoxLayout(base_panel);
@@ -80,14 +78,4 @@ Widget::Widget(const QString content, QWidget *parent)
 
         base_layout->addWidget(widget);
     }
-}
-
-Widget::~Widget()
-{
-
-}
-
-QString Widget::getContent() const
-{
-    return config_xml->toString();
 }
