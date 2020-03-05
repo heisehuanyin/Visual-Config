@@ -48,10 +48,12 @@
 
 
 ### 代码使用示例
-```
-ConfigV1 ftool;
+见示例项目：
+1. ConfigGen
+2. ConfigParser
+1. ConfigPanel
+4. ParserConfig
 
-```
 
 
 ## 交互性配置协议描述（暂讨论）
